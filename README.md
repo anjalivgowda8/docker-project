@@ -1,17 +1,20 @@
-# 🚀 Docker Compose Flask + PostgreSQL App
+# NGINX High Availability Project with Docker
 
-A beginner-friendly full-stack project using **Flask**, **PostgreSQL**, and **Docker Compose**.
+This project simulates a high-availability web architecture locally using Docker containers.
 
----
-
-## 📌 Features
-
-- 🐍 Flask backend
-- 🐘 PostgreSQL database
-- 🐳 Docker Compose multi-container setup
-- 🌐 Simple frontend (HTML + JavaScript)
-- 🔗 API integration
+A browser sends requests to an NGINX load balancer, which distributes traffic between two NGINX web servers. If one server goes down, traffic is automatically routed to the remaining healthy server.
 
 ---
 
-## 🏗️ Project Structure
+## Architecture
+
+```text
+Browser
+  │
+NGINX Load Balancer (container)
+  │
+ ┌───────────────┬───────────────┐
+ │               │
+NGINX Server 1   NGINX Server 2
+(container)     (container)
+Serving HTML    Serving HTML
